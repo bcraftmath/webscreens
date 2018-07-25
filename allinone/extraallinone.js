@@ -57,11 +57,11 @@ axesColor3: "#ffff00",
 numOfLinesY3: 8,
 lineThickness3: 6,
 numCharts: 3,
-gapSize: "10px",
+gapSize: "0",
 });
 
 //set gaps
-document.querySelector('#stuff').style.gridGap=gapSize;
+document.querySelector('#stuff').style.gridGap=gapSize+"px";
 
 // Load Charts and the corechart package.
 google.charts.load('current', {'packages':['corechart']});
