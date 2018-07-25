@@ -57,7 +57,7 @@ axesColor3: "#ffff00",
 numOfLinesY3: 8,
 lineThickness3: 6,
 numCharts: 3,
-gapSize: "0",
+gapSize: "10",
 });
 
 //set gaps
