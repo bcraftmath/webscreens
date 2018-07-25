@@ -1,13 +1,17 @@
 /* This sets up everything to display correctly. */
 
-body {
+* {
   margin: 0;
 }
 
 #stuff {
-  position: absolute;
-  display: grid;
-  grid-template-columns: 100vw;
-  grid-auto-rows: 50vw;
-  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.charts {
+  width: 100vw;
+  height: 50vw;
 }
