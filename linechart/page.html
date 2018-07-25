@@ -1,0 +1,124 @@
+<html>
+<head>
+
+
+  <script src="autotoolsfunctions.js"></script>
+  <link rel="stylesheet" type="text/css" href="autotoolsstyle.css" />
+  <script src="loader.js"></script>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <style type="text/css">
+  #container{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow:hidden;
+  }
+  #the_chart {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow:hidden;
+  }
+
+  </style>
+  <meta name="autotoolswebscreen" type="variablejs" id="titleText" group="Title" label="Text" hint="Chart Title" />
+  <meta name="autotoolswebscreen" type="variablejs" id="titleSize" group="Title" label="Size" hint="20" />
+  <meta name="autotoolswebscreen" type="variablejs" id="titleColor" group="Title" label="Title Color" hing="Pick a color." isColor="true" />
+  <meta name="autotoolswebscreen" type="variablejs" id="titlePos" group="Title" label="Title Position" options="in,out,none" defaultValue="out"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="curvedGraph" group="Graph Properties" label="Curved or Line?" options="function,line" defaultValue="function" />
+  <meta name="autotoolswebscreen" type="variablejs" id="animationChoice" group="Graph Properties" label="Animation?" subtype="boolean" defaultValue="false" />
+  <meta name="autotoolswebscreen" type="variablejs" id="bgColor" group="Graph Properties" label="Background Color" hint="Pick a color." isColor="true" />
+  <meta name="autotoolswebscreen" type="variablejs" id="lineColor" group="Graph Properties" label="Line Color" hint="Pick a color." isColor="true" />
+  <meta name="autotoolswebscreen" type="variablejs" id="xLabels" group="Format Axes" label="X Axis" hint="arrXlabels()" />
+  <meta name="autotoolswebscreen" type="variablejs" id="yLabels" group="Format Axes" label="Y Axis" hint="arrYlabels()" />
+  <meta name="autotoolswebscreen" type="variablejs" id="axesTitles" group="Format Axes" label="Axes Titles" options="in,out,none" defaultValue="out"/>
+  <meta name="autotoolswebscreen" type="variablejs" id="xAxisTitle" group="Format Axes" label="Title of x-axis?" hint="x-axis title goes here..." />
+  <meta name="autotoolswebscreen" type="variablejs" id="yAxisTitle" group="Format Axes" label="Title of y-axis?" hint="y-axis title goes here..." />
+  <meta name="autotoolswebscreen" type="variablejs" id="axesColor" group="Format Axes" label="Axes Color" hint="Pick a color." isColor="true" />
+  <meta name="autotoolswebscreen" type="variablejs" id="maxY" group="Format Axes" label="Maximum Y?" hint="What is the maximum y value you want? Numbers only."/>
+  <meta name="autotoolswebscreen" type="variablejs" id="minY" group="Format Axes" label="Minimum Y?" hint="What is the minimum y value you want? Numbers only."/>
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="the_chart"></div>
+  </div>
+</body>
+<script type="text/javascript">
+
+AutoTools.setDefaultValues({
+  titleText: "Battery Level (Sample)",
+  titleSize: 20,
+  titleColor: "#000000",
+  titlePos: "out",
+  curvedGraph: "function",
+  animationChoice: false,
+  bgColor: "#ffffff",
+  lineColor: "#000000",
+  xLabels: "1:00pm,2:00pm,3:00pm,4:00pm,5:00pm,6:00pm,7:00pm,8:00pm,9:00pm,10:00pm,11:00pm,12:00am,1:00am",
+  yLabels: "0,10,20,35,50,70,80,100,99,80,50,10,2",
+  axesTitles: "out",
+  xAxisTitle: "Time",
+  yAxisTitle: "Percentage",
+  axesColor: "#000000",
+  maxY: 100,
+  minY:0,
+});
+var graphData = AutoTools.fieldsToObject("xLabels","yLabels");
+// Load the Visualization API and the corechart package.
+google.charts.load('current', {'packages':['corechart']});
+
+// Set a callback to run when the Google Visualization API is loaded.
+google.charts.setOnLoadCallback(drawChart);
+
+// Callback that creates and populates a data table,
+// instantiates the pie chart, passes in the data and
+// draws it.
+function drawChart() {
+  // Create the data table.
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', xAxisTitle);
+  data.addColumn('number', yAxisTitle);
+
+  var rows = graphData.map(row => [row.xLabels, Number.parseFloat(row.yLabels)]);
+  data.addRows(rows);
+
+// Set chart options
+var options = {
+  title: titleText,
+  titleTextStyle: {color: titleColor, fontName: 'Roboto', fontSize: Number.parseInt(titleSize)},
+  titlePosition : titlePos,
+  curveType : curvedGraph,
+  legend: { position: 'none' },
+  backgroundColor: bgColor,
+  vAxis: {viewWindow: {max: maxY, min: minY},
+    title: yAxisTitle,
+    textStyle: {color: axesColor},
+    titleTextStyle:{italic: false, color: axesColor},
+    gridlines: {color: axesColor},
+    baselineColor: axesColor},
+  animation: {startup: animationChoice,
+    duration:1000,
+    easing:'inAndOut'},
+  hAxis: {slantedText: true,
+    slantedTextAngle: 90,
+    title: xAxisTitle,
+    textStyle: {color: axesColor},
+    titleTextStyle:{italic: false, color: axesColor}},
+  axisTitlesPosition: axesTitles,
+  colors: [lineColor],
+};
+
+// Instantiate and draw our chart, passing in some options.
+var chart = new google.visualization.LineChart(document.getElementById('the_chart'));
+chart.draw(data, options);
+}
+</script>
+</html>
