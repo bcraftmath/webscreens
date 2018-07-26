@@ -68,7 +68,7 @@ gapSize: "25",
 
 //set gaps
 document.querySelector('#chart2').style.marginTop=gapSize+"px";
-document.querySelector('#chart2').style.marginBottom=gapSize+"px";
+document.querySelector('#chart3').style.marginTop=gapSize+"px";
 
 // Load Charts and the corechart package.
 google.charts.load('current', {'packages':['corechart']});
