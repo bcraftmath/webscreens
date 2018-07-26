@@ -48,7 +48,7 @@ titleColor3: "#ffffff",
 titlePos3: "none",
 curvedGraph3: "function",
 animationChoice3: true,
-bgColor3: "white",
+bgColor3: "#F5F5F5",
 yMax3: "auto",
 yMin3: "auto",
 maxLineColor3: "#00ff00",
@@ -63,7 +63,7 @@ axesColor3: "#000",
 numOfLinesY3: 8,
 lineThickness3: 4,
 numCharts: 3,
-gapSize: "5",
+gapSize: "25",
 });
 
 //set gaps
