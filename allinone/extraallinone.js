@@ -115,6 +115,7 @@ data.addRows(rows);
 
 // Set chart options
 var options = {
+chartArea:{left:'15%', width:'70%', height:'70%'},
 title: titleText1,
 titleTextStyle: {color: titleColor1, fontName: 'Roboto', fontSize: Number.parseInt(titleSize1)},
 titlePosition : titlePos1,
@@ -159,6 +160,7 @@ data.addRows(rows);
 
 // Set chart options
 var options = {
+chartArea:{left:'15%', width:'70%', height:'70%'},
 title: titleText2,
 titleTextStyle: {color: titleColor2, fontName: 'Roboto', fontSize: Number.parseInt(titleSize2)},
 titlePosition : titlePos2,
@@ -203,6 +205,7 @@ data.addRows(rows);
 
 // Set chart options
 var options = {
+chartArea:{left:'15%', width:'70%', height:'70%'},
 title: titleText3,
 titleTextStyle: {color: titleColor3, fontName: 'Roboto', fontSize: Number.parseInt(titleSize3)},
 titlePosition : titlePos3,
