@@ -64,6 +64,7 @@ numOfLinesY3: 8,
 lineThickness3: 4,
 numCharts: 3,
 gapSize: "25",
+fontFam: "arial",
 });
 
 //set gaps
@@ -115,9 +116,10 @@ data.addRows(rows);
 
 // Set chart options
 var options = {
+fontName: fontFam,
 chartArea:{left:'15%', width:'70%', height:'70%'},
 title: titleText1,
-titleTextStyle: {color: titleColor1, fontName: 'Roboto', fontSize: Number.parseInt(titleSize1)},
+titleTextStyle: {color: titleColor1, fontSize: Number.parseInt(titleSize1)},
 titlePosition : titlePos1,
 curveType : curvedGraph1,
 legend: { position: 'none' },
@@ -160,9 +162,10 @@ data.addRows(rows);
 
 // Set chart options
 var options = {
+fontName: fontFam,
 chartArea:{left:'15%', width:'70%', height:'70%'},
 title: titleText2,
-titleTextStyle: {color: titleColor2, fontName: 'Roboto', fontSize: Number.parseInt(titleSize2)},
+titleTextStyle: {color: titleColor2, fontSize: Number.parseInt(titleSize2)},
 titlePosition : titlePos2,
 curveType : curvedGraph2,
 legend: { position: 'none' },
@@ -205,9 +208,10 @@ data.addRows(rows);
 
 // Set chart options
 var options = {
+fontName: fontFam,
 chartArea:{left:'15%', width:'70%', height:'70%'},
 title: titleText3,
-titleTextStyle: {color: titleColor3, fontName: 'Roboto', fontSize: Number.parseInt(titleSize3)},
+titleTextStyle: {color: titleColor3, fontSize: Number.parseInt(titleSize3)},
 titlePosition : titlePos3,
 curveType : curvedGraph3,
 legend: { position: 'none' },
